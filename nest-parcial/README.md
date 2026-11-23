@@ -66,12 +66,12 @@ También puedes importar `nest-parcial.postman_collection.json` en Postman o uti
 
 ## Evidencia de corrección — Parcial 2
 
-- CreateTaskDto.ts permite únicamente `title`, `description`, `completed` y `userId`. El `ValidationPipe` global rechaza propiedades no declaradas con `400 Bad Request`; `TaskSchema` también tiene `strict: true`.
-- `TasksModule` consume `UsersService` exportado por `UsersModule` para comprobar al usuario. El módulo de tareas no registra el esquema de usuarios.
-- `AuthGuard` se aplica solamente a `POST /tasks`; las consultas `GET /tasks` y `GET /tasks/:id` permanecen públicas, lo que permite arreglar lo dicho en el enunciado.
-- `TasksController` depende únicamente de `TasksService`; la verificación del usuario/persistencia se realizan en `TasksService.create`.
-- Las pruebas de `src/tasks/tasks.controller.spec.ts` verifican consulta pública, autorización, rechazo de propiedades extra y delegación al servicio. `src/tasks/tasks.service.spec.ts` verifica la validación del usuario y persistencia.
+*CreateTaskDto.ts permite únicamente `title`, `description`, `completed` y `userId`. El `ValidationPipe` global rechaza propiedades no declaradas con `400 Bad Request`; `TaskSchema` también tiene `strict: true, cosa importnate.
+*`TasksModule` consume `UsersService` exportado por `UsersModule` para comprobar al usuario. El módulo de tareas no registra el esquema de usuarios.
+*`AuthGuard` se aplica solamente a `POST /tasks`; las consultas `GET /tasks` y `GET /tasks/:id` permanecen públicas, lo que permite arreglar lo dicho en el enunciado.
+*`TasksController` depende únicamente de `TasksService`; la verificación del usuario/persistencia se realizan en `TasksService.create`, validando la persistencia en efecto.
+*Las pruebas de `src/tasks/tasks.controller.spec.ts` verifican consulta pública, autorización, rechazo de propiedades extra y delegación al servicio. `src/tasks/tasks.service.spec.ts` verifica la validación del usuario y persistencia.
 
 
--> Copilot de vscode, me ayudo a crear un .gitignore, dado que aparecisasn garcias a la 
-instalción de npm, como 10.000 changes para el commit, algo 0 logico, entonces pues le pedi ayuda solo para eso.
+-> Copilot de vscode, me ayudo a crear un .gitignore, dado que aparecian garacias a la 
+instalción de npm como 10.000 changes para el commit, algo 0 logico, entonces pues le pedi ayuda solo para eso.
