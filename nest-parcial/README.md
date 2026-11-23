@@ -63,3 +63,15 @@ API REST en NestJS y Mongoose para la gestión de **Usuarios (`/users`)** y **Ta
 | `POST` | `/tasks` | Restringido (`Authorization: admin-secret-token`) | Crear una tarea asociada a un usuario |
 
 También puedes importar `nest-parcial.postman_collection.json` en Postman o utilizar `requests.http` con la extensión REST Client de VS Code para probar manualmente los endpoints.
+
+## Evidencia de corrección — Parcial 2
+
+- CreateTaskDto.ts permite únicamente `title`, `description`, `completed` y `userId`. El `ValidationPipe` global rechaza propiedades no declaradas con `400 Bad Request`; `TaskSchema` también tiene `strict: true`.
+- `TasksModule` consume `UsersService` exportado por `UsersModule` para comprobar al usuario. El módulo de tareas no registra el esquema de usuarios.
+- `AuthGuard` se aplica solamente a `POST /tasks`; las consultas `GET /tasks` y `GET /tasks/:id` permanecen públicas, lo que permite arreglar lo dicho en el enunciado.
+- `TasksController` depende únicamente de `TasksService`; la verificación del usuario/persistencia se realizan en `TasksService.create`.
+- Las pruebas de `src/tasks/tasks.controller.spec.ts` verifican consulta pública, autorización, rechazo de propiedades extra y delegación al servicio. `src/tasks/tasks.service.spec.ts` verifica la validación del usuario y persistencia.
+
+
+-> Copilot de vscode, me ayudo a crear un .gitignore, dado que aparecisasn garcias a la 
+instalción de npm, como 10.000 changes para el commit, algo 0 logico, entonces pues le pedi ayuda solo para eso.
